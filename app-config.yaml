@@ -1,4 +1,4 @@
-port: null
+port: COM6
 
 board: ESP8266
 
