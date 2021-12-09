@@ -12,18 +12,16 @@ module.exports = {
     filename: 'index.js',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.js'],
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
         loader: 'ts-loader',
       },
     ],
   },
   optimization: {
-    minimize: false,
-    runtimeChunk: false,
+    minimize: true,
   },
 };

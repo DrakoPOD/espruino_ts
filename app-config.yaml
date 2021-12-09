@@ -1,0 +1,5 @@
+port: null
+
+board: ESP8266
+
+baud: 115200

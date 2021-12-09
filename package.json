@@ -1,21 +1,22 @@
 {
-  "name": "mqtt_ts",
+  "name": "espruino_ts",
   "version": "1.0.0",
   "description": "Template for Espruino projects with TypeScript",
   "main": "src/app.ts",
   "scripts": {
     "build": "webpack",
-    "upload": "espruino --board ESP8266 -b 115200 ./dist/index.js",
-    "monitor": "espruino -b 115200",
-    "upload-monitor": "npm run upload && npm run monitor"
+    "upload": "run-func script.js Upload",
+    "monitor": "run-func script.js Monitor",
+    "upload-monitor": "run-func script.js UploadMonitor"
   },
   "author": "DrakoPOD",
   "license": "ISC",
   "devDependencies": {
     "@types/espruino": "^1.94.6",
-    "@vercel/ncc": "^0.32.0",
+    "async": "^3.2.2",
     "espruino": "^0.1.40",
-    "npm-watch": "^0.11.0",
+    "js-yaml": "^4.1.0",
+    "run-func": "^1.0.5",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.2",
     "webpack": "^5.64.4",
@@ -28,7 +29,8 @@
   "keywords": [
     "Espruino",
     "ESP8266",
-    "Javascript"
+    "Javascript",
+    "TypeScript"
   ],
   "bugs": {
     "url": "https://github.com/DrakoPOD/espruino_ts/issues"
