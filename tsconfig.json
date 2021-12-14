@@ -1,20 +1,19 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "lib": [
-            "es2015",
-            "dom" // setInterval, console
-        ],
-        "strict": true,
-        "outDir": "./dist",
-        "rootDir": "./src",
-        "removeComments": true,
-        "paths": {
-            "*": ["./types/*"]
-        },
-        "allowJs": false
-    },
-    "exclude": ["node_modules"],
-    "include": ["src/*.ts"]
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "lib": [
+      "es2015",
+      "dom" // setInterval, console
+    ],
+    "strict": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "removeComments": true,
+    "typeRoots": ["./types/", "./node_modules/@types/"],
+    "allowJs": false,
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["./src/*.ts", "./types/*.ts"]
 }

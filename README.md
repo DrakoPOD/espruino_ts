@@ -11,12 +11,12 @@ Compile the code to ./dist folder using webpack
 ```
 npm run upload
 ```
-Upload the code to espruino board, port must be specified in `app-config` or `app-config.user`.
+Upload the code to espruino board, port must be specified in `env-config`.
 
 ```
 npm run monitor
 ```
-Monitor the espruino board, port must be specified in `app-config` or `app-config.user`.
+Monitor the espruino board, port must be specified in `env-config`.
 
 ```
 num run upload-monitor

@@ -1,0 +1,10 @@
+# Port where mcu device is located
+port: COM6
+
+# ESP32 after flash has 115200 speed.
+baud: 115200
+
+board: ESP8266
+
+#Upload the compressed version of the file
+minify: false

@@ -1,14 +1,12 @@
 const { series } = require('async');
 const { fork } = require('child_process');
+const yargs = require('yargs/yargs');
+const { hideBin } = require('yargs/helpers');
 const yaml = require('js-yaml');
 const fs = require('fs');
 
-const userConfig = yaml.load(fs.readFileSync('./app-config.user.yaml'));
-
-const config = {
-  ...yaml.load(fs.readFileSync('./app-config.yaml')),
-  ...userConfig,
-};
+const config = yaml.load(fs.readFileSync('./env-config.yaml'));
+const argv = yargs(hideBin(process.argv)).argv;
 
 function Monitor(cb) {
   const monitor = fork(require.resolve('espruino/bin/espruino-cli'), [
@@ -19,9 +17,6 @@ function Monitor(cb) {
     '--port',
     config.port,
   ]);
-  if (!cb) {
-    return;
-  }
   monitor.on('close', () => {
     cb();
   });
@@ -35,20 +30,26 @@ function Upload(cb) {
     config.baud,
     '--port',
     config.port,
-    './dist/index.js',
+    config.minify == true ? './dist/index.min.js' : './dist/index.js',
   ]);
-  if (!cb) {
-    return;
-  }
   upload.on('close', () => {
     cb();
   });
 }
 
-function UploadMonitor() {
-  series([(cb) => Upload(cb), (cb) => Monitor(cb)]);
+function Run() {
+  series([
+    (cb) => {
+      if (argv.upload) {
+        Upload(cb);
+      } else cb();
+    },
+    (cb) => {
+      if (argv.monitor) {
+        Monitor(cb);
+      } else cb();
+    },
+  ]);
 }
-function Test() {
-  console.log('test');
-}
-module.exports = { Upload, Monitor, UploadMonitor, Test };
+
+Run();

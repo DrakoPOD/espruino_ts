@@ -1,5 +1,0 @@
-port: COM6
-
-board: ESP8266
-
-baud: 115200
