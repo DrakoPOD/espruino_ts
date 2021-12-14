@@ -19,6 +19,6 @@ npm run monitor
 Monitor the espruino board, port must be specified in `env-config`.
 
 ```
-num run upload-monitor
+npm run upload-monitor
 ```
 Run upload then, run monitor.
